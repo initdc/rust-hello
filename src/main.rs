@@ -3,6 +3,8 @@ use std::cmp::Ordering;
 use rand::Rng;
 
 fn main() {
+    print_prime();
+
     println!("Let's play guess game!");
     let secret = rand::thread_rng().gen_range(1..101);
     // println!("The secret number is {}.", secret);
@@ -32,4 +34,32 @@ fn main() {
             }
         }
     }
+}
+
+fn print_prime() {
+    println!("Prime table in 1000");
+    let mut num = -1;
+    for i in 2..1000 {
+        if is_prime(i) {
+            num += 1;
+            if num % 19 == 0 {
+                println!()
+            }
+            print!("{} ", i)
+        }
+    }
+    println!();
+}
+
+fn is_prime(x: u32) -> bool {
+    return if x < 2 {
+        true
+    } else {
+        for j in 2..x {
+            if x % j == 0 && j != x {
+                return false;
+            }
+        }
+        true
+    };
 }
